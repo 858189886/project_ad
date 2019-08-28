@@ -1,8 +1,8 @@
-package com.luodesong.tag
+package com.tag
 
 import ch.hsr.geohash.GeoHash
-import com.luodesong.tag.thetrait.Tag
-import com.luodesong.util.{JedisPool, MapUtil, Util2Type}
+import com.tag.thetrait.Tag
+import com.utils.{JedisPool, MapUtil, Util2Type}
 import org.apache.spark.sql.Row
 import redis.clients.jedis.Jedis
 
@@ -47,7 +47,7 @@ object TagBusi extends Tag{
         } else {
             myList.append(("未知区域", 0))
         }
-        JedisPool.releaseMyredis(re)
+        JedisPool.releaaseMyredis(re)
         myList
     }
 

@@ -1,7 +1,8 @@
-package com.luodesong.tag
+package com.tag
 
-import com.luodesong.util.HbaseUtil.Data2HbaseUtil
-import com.luodesong.util.{JedisPool, TagUtil}
+
+import com.utils.HbaseUtil.Data2HbaseUtil
+import com.utils.{JedisPool, TagUtil}
 import org.apache.hadoop.hbase.client.Put
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable
 import org.apache.hadoop.hbase.util.Bytes
@@ -51,7 +52,7 @@ object TagsContext2Hbase {
           * 这一步会产生多个tupe，必须得将多个tupe压平
           */
         val pointRDD: RDD[(Long, List[(String, Int)])] = useridsAndRowRDD.mapPartitions(x => {
-            val re: Jedis = JedisPool.getMyrdis()
+            val re: Jedis = JedisPool.getMyrdis
             x.map(tp => {
                 //通过row数据打上所有标签(按需求)
                 val advTag: ListBuffer[(String, Int)] = TagAdv.makeTags(tp._2)

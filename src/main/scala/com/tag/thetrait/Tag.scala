@@ -1,4 +1,4 @@
-package com.luodesong.tag.thetrait
+package com.tag.thetrait
 
 import scala.collection.mutable._
 /**

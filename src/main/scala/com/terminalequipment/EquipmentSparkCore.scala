@@ -1,4 +1,4 @@
-package com.luodesong.terminalequipment
+package com.terminalequipment
 
 import java.sql.{Connection, Statement}
 

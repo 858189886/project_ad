@@ -1,4 +1,4 @@
-package com.luodesong.util
+package com.utils
 
 import org.apache.http.client.methods.{CloseableHttpResponse, HttpGet}
 import org.apache.http.impl.client.{CloseableHttpClient, HttpClients}

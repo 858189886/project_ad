@@ -1,4 +1,4 @@
-package com.luodesong.util
+package com.utils
 
 import org.apache.commons.lang3.StringUtils
 import org.apache.spark.sql.Row

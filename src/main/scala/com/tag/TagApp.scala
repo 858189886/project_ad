@@ -1,6 +1,7 @@
 package com.tag
 
-import com.luodesong.tag.thetrait.Tag
+
+import com.tag.thetrait.Tag
 import org.apache.spark.sql.Row
 
 import scala.collection.mutable.ListBuffer

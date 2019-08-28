@@ -1,12 +1,11 @@
 package com.tag
 
-import com.utils.JedisPool
+import com.utils.{JedisPool, TagUtil}
 import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{DataFrame, SQLContext}
 import org.apache.spark.{SparkConf, SparkContext}
 import redis.clients.jedis.Jedis
-
 import scala.collection.mutable.ListBuffer
 
 /**
@@ -57,10 +56,10 @@ object TagsContext {
 
         //读取点击流日志
         val df: DataFrame = sqlContext.read.parquet(inputPath)
-        val userIdAndTag: RDD[(String, List[(String, Int)])] =df.filter(TagU)
+        val userIdAndTag: RDD[(String, List[(String, Int)])] =
             df.filter(TagUtil.oneUserId)
                 .mapPartitions(temp => {
-                    val re: Jedis  = JedisPool.getMyrdis()
+                    val re: Jedis  = JedisPool.getMyrdis
                     temp.map(row => {
                         //取出用户id
                         val userId: String = TagUtil.getOneUserid(row)

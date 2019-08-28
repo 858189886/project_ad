@@ -1,7 +1,6 @@
 package com.ProCityCt
 
 import java.util.Properties
-
 import com.typesafe.config.{Config, ConfigFactory}
 import org.apache.spark.sql.{DataFrame, SQLContext, SaveMode}
 import org.apache.spark.{SparkConf, SparkContext}

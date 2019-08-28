@@ -2,7 +2,7 @@ package com.luodesong.terminalequipment
 
 import java.sql.{Connection, Statement}
 
-import com.luodesong.util.{DBConnectionPool, LocationUtil, MakeAnsUtil, MakeTupeRddUtil}
+import com.utils.{DBConnectionPool, MakeAnsUtil, MakeTupeRddUtil}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{DataFrame, SQLContext}
 import org.apache.spark.{SparkConf, SparkContext}

@@ -1,6 +1,5 @@
 package com.tag
 
-import com.luodesong.util.{JedisPool, TagUtil}
 import com.utils.JedisPool
 import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.rdd.RDD
@@ -58,7 +57,8 @@ object TagsContext {
 
         //读取点击流日志
         val df: DataFrame = sqlContext.read.parquet(inputPath)
-        val userIdAndTag: RDD[(String, List[(String, Int)])] = df.filter(TagUtil.oneUserId)
+        val userIdAndTag: RDD[(String, List[(String, Int)])] =df.filter(TagU)
+            df.filter(TagUtil.oneUserId)
                 .mapPartitions(temp => {
                     val re: Jedis  = JedisPool.getMyrdis()
                     temp.map(row => {

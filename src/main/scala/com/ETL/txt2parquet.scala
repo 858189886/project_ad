@@ -5,9 +5,9 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{DataFrame, Row, SQLContext}
 import org.apache.spark.{SparkConf, SparkContext}
 
-
 /**
   * txt格式的文件清洗转化为spark的默认parquet格式
+  *
   * parquet是一个列式存储格式
   * inputpath:输入路径
   * outputpath:输出路径
@@ -134,14 +134,12 @@ object txt2parquet {
         Util2Type.toInt(arr(84))
       )
     })
-    rowRDD
 
     //构建DataFrame
     val df: DataFrame = sqlContext.createDataFrame(rowRDD,SchemaUtil.getSchemal)
 
     //存储为parquet文件
     df.write.parquet(outputpath)
-
     sc.stop()
 
   }

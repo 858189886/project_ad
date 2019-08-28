@@ -4,6 +4,9 @@
     <excludeFromCompile>
       <file url="file://$PROJECT_DIR$/src/main/scala/com/Tags/BusinessTag.scala" />
       <file url="file://$PROJECT_DIR$/src/main/scala/com/app/AppSparkCore.scala" />
+      <file url="file://$PROJECT_DIR$/src/main/scala/com/tag/TagsContext.scala" />
+      <file url="file://$PROJECT_DIR$/src/main/scala/com/terminalequipment/NetworkingMode.scala" />
+      <file url="file://$PROJECT_DIR$/src/main/scala/com/terminalequipment/OperatingSystem.scala" />
     </excludeFromCompile>
     <annotationProcessing>
       <profile name="Maven default annotation processors profile" enabled="true">

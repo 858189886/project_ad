@@ -5,6 +5,9 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 import redis.clients.jedis.Jedis
 
+/**
+  * 读取数据出来处理后存入到redis数据库中去
+  */
 object PutData2Redis {
   def main(args: Array[String]): Unit = {
     //判断路径
@@ -12,6 +15,7 @@ object PutData2Redis {
       println("目录参数不正确,退出程序")
       sys.exit()
     }
+
     //创建一个集合保存输入输出产数
     val Array(inputpath) = args
     val conf: SparkConf = new SparkConf()
@@ -29,10 +33,9 @@ object PutData2Redis {
 
       //对每一条数据进行操作
       x.foreach(x => {
-        //切割并且处理数据
-        val str: String = x.substring(1, x.length - 1)
-        val strings: Array[String] = str.split(",")
-        //过滤掉“(,主题)”这种key为空值的数据
+        val str: String = x.substring(1, x.length - 1)        //切割并且处理数据
+        val strings: Array[String] = str.split(",")  //过滤掉“(,主题)”这种key为空值的数据
+
         if (strings.length == 2) {
           //存入String类型的value值
           /**
@@ -47,5 +50,8 @@ object PutData2Redis {
       //关闭连接
       JedisPool.releaaseMyredis(jedis)
     })
+
+
+
   }
 }

@@ -5,8 +5,8 @@ import org.apache.spark.{SparkConf, SparkContext}
 
 /**
   * 判断个省市数据量分布情况
-  * inputpath:
-  * outputpath:
+  * inputpath:E:/Git/output/pro_ad/parquet01
+  * outputpath: E:/Git/output/pro_ad/json01
   */
 object Data2Json {
   def main(args: Array[String]): Unit = {
@@ -35,7 +35,7 @@ object Data2Json {
     //创建临时文件
     logsDF.registerTempTable("logs")
 
-    val sqlString: String = "select count(*) ct,provincename,cityname from logss group byprovincename," +
+    val sqlString: String = "select count(*) ct,provincename,cityname from logs group by provincename," +
       "cityname sort by ct desc "
     val ansDF: DataFrame = sqlContext.sql(sqlString)
     ansDF.show()
@@ -46,7 +46,6 @@ object Data2Json {
     ansDF.coalesce(1).write.mode(SaveMode.Append).json(outputpath)
 
     sc.stop()
-
 
   }
 

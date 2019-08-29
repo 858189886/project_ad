@@ -139,7 +139,7 @@ object txt2parquet {
     val df: DataFrame = sqlContext.createDataFrame(rowRDD,SchemaUtil.getSchemal)
 
     //存储为parquet文件
-    df.write.parquet(outputpath)
+    df.coalesce(1).write.parquet(outputpath)
     sc.stop()
 
   }

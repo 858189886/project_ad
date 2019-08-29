@@ -5,6 +5,10 @@ import com.typesafe.config.{Config, ConfigFactory}
 import org.apache.spark.sql.{DataFrame, SQLContext, SaveMode}
 import org.apache.spark.{SparkConf, SparkContext}
 
+/**
+  * 将ETL之后的数据保存到MySQL
+  */
+
 object Data2Mysql {
   def main(args: Array[String]): Unit = {
     //判断路径

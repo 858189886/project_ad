@@ -1,5 +1,11 @@
 package com.ProCityCt
 
+/**
+  * 统计各省市数据量分布情况
+  * inputPath: E:\Test-workspace\testSpark\input\project\DMP
+  * outputPath: hdsf://min1:8020/sparktest/procity
+  */
+
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{DataFrame, SQLContext, SaveMode}
 import org.apache.spark.{SparkConf, SparkContext}
@@ -25,7 +31,8 @@ object Data2HdfsSparkCore {
     val logsRDD: RDD[String] = sc.textFile(inputpath)
 
     //将省市和城市拼接成key-value对
-    val proAndCityRDD: RDD[(String, Int)] = logsRDD.map(_.split(",", -1)).filter(_.length >= 85).map(x => {
+    val proAndCityRDD: RDD[(String, Int)] = logsRDD.map(_.split(",", -1))
+      .filter(_.length >= 85).map(x => {
       (x(24) + "," + x(25), 1)
     })
 
